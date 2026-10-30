@@ -14,13 +14,11 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Make gradle wrapper executable
-        run: chmod +x gradlew
-        continue-on-error: true
+      - name: Install Gradle wrapper
+        run: gradle wrapper --gradle-version 8.7
 
       - name: Build with Gradle
         run: ./gradlew build
-        continue-on-error: true
 
       - name: Upload production-ready jar
         uses: actions/upload-artifact@v4
